@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { axios, APIResponse } from "lib/axios";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 export interface ResetPasswordModalProps {
   show: boolean;
@@ -22,6 +23,7 @@ export const ResetPasswordModal = ({
     employeeNumber: "",
     newPassword: "",
   });
+  const { t } = useTranslation();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -57,7 +59,7 @@ export const ResetPasswordModal = ({
     >
       <Form onSubmit={handleSubmit}>
         <Modal.Header>
-          <Modal.Title>Passwort zurücksetzten</Modal.Title>
+          <Modal.Title>{t("reset.password.reset")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Row>
@@ -79,7 +81,7 @@ export const ResetPasswordModal = ({
             <Col md="12">
               <InputGroup className="mb-3">
                 <InputGroup.Text id="reset-employee-employeeNumber">
-                  <strong>PersonalNr.</strong>
+                  <strong>{t("employee.number")}</strong>
                 </InputGroup.Text>
                 <Form.Control
                   type="number"
@@ -94,11 +96,11 @@ export const ResetPasswordModal = ({
             <Col md="12">
               <InputGroup className="mb-3">
                 <InputGroup.Text id="reset-employee-employeeNumber">
-                  <strong>Neues Passwort</strong>
+                  <strong>{t("reset.password")}</strong>
                 </InputGroup.Text>
                 <Form.Control
                   type="password"
-                  placeholder="Passwort"
+                  placeholder={t("login.example.password")}
                   aria-label="password"
                   name="newPassword"
                   onChange={onFieldUpdate}
@@ -110,10 +112,10 @@ export const ResetPasswordModal = ({
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={onHide}>
-            Schließen
+            {t("close")}
           </Button>
           <Button type="submit" variant="primary">
-            Speichern
+            {t("save")}
           </Button>
         </Modal.Footer>
       </Form>

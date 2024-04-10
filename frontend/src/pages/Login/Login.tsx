@@ -13,6 +13,7 @@ import { axios, APIResponse } from "lib/axios";
 import { useAuth } from "components/Auth";
 import { useNavigate } from "react-router";
 import { ResetPasswordModal } from "../ResetPasswordModal";
+import { useTranslation } from "react-i18next";
 
 interface FormProps {
   email: string;
@@ -22,6 +23,7 @@ interface FormProps {
 export function Login() {
   const { setToken } = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [showresetPasswordModal, setShowResetPasswordModal] = useState(false);
   const [form, setForm] = useState<FormProps>({
@@ -91,7 +93,7 @@ export function Login() {
           <Card className="mt-5" style={{ width: "50%" }}>
             <Card.Header>
               {" "}
-              <h2>Login</h2>
+              <h2>{t("login")}</h2>
             </Card.Header>
             <Card.Body>
               <Row>
@@ -99,7 +101,7 @@ export function Login() {
                   <Form.Control
                     required
                     type="text"
-                    placeholder="mustermann"
+                    placeholder={t("login.example.name")}
                     aria-label="mustermann"
                     aria-describedby="login-email"
                     onChange={onUpdateField}
@@ -117,7 +119,7 @@ export function Login() {
                   <Form.Control
                     required
                     type="password"
-                    placeholder="Passwort"
+                    placeholder={t("login.example.password")}
                     aria-label="password"
                     aria-describedby="login-password"
                     onChange={onUpdateField}
@@ -141,11 +143,11 @@ export function Login() {
                   className="reset-password"
                   onClick={handleResetPasswordClick}
                 >
-                  Password vergessen?
+                  {t("login.forgott.password")}
                 </strong>
               </Row>
               <Button type="submit" variant="primary" disabled={fieldEmpty}>
-                Anmelden
+                {t("login.login")}
               </Button>
             </Card.Body>
           </Card>

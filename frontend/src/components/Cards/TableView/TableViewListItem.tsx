@@ -3,6 +3,7 @@ import { Employee } from "types/employee";
 import { useState } from "react";
 import { EditEmployeeModal } from "pages/EditEmployeeModal/EditEmployeeModal";
 import { DeviceTableView } from "pages/TableView";
+import { useTranslation } from "react-i18next";
 
 export interface TableViewListItemProps {
   employee: Employee;
@@ -10,6 +11,7 @@ export interface TableViewListItemProps {
 
 export const TableViewListItem = ({ employee }: TableViewListItemProps) => {
   const [showModal, setShowModal] = useState(false);
+  const { t } = useTranslation();
 
   const handleRowClick = () => {
     setShowModal(true);
@@ -30,14 +32,16 @@ export const TableViewListItem = ({ employee }: TableViewListItemProps) => {
       >
         <thead>
           <tr>
-            <th className="table-header-color">ID</th>
-            <th className="table-header-color">Name</th>
-            <th className="table-header-color">Nachname</th>
-            <th className="table-header-color">Anrede</th>
-            <th className="table-header-color">Email</th>
-            <th className="table-header-color">PersonalNr.</th>
-            <th className="table-header-color">Rechte</th>
-            <th className="table-header-color">Geräte</th>
+            <th className="table-header-color">{t("tableview.id")}</th>
+            <th className="table-header-color">{t("tableview.name")}</th>
+            <th className="table-header-color">{t("tableview.lastname")}</th>
+            <th className="table-header-color">{t("tableview.salutation")}</th>
+            <th className="table-header-color">{t("tableview.email")}</th>
+            <th className="table-header-color">
+              {t("tableview.personalnumber")}
+            </th>
+            <th className="table-header-color">{t("tableview.right")}</th>
+            <th className="table-header-color">{t("tableview.devices")}</th>
           </tr>
         </thead>
         <tbody>

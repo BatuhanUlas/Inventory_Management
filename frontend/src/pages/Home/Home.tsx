@@ -11,6 +11,7 @@ import { fetchEmployee } from "services/employees";
 import { TableView } from "pages/TableView";
 import { CreateEmployeeModal } from "pages/CreateEmployeeCard";
 import { SearchBar } from "components/App/SearchBar";
+import { useTranslation } from "react-i18next";
 
 export function Home() {
   const [employeeView, showEmployeeView] = useState<boolean>(false);
@@ -19,6 +20,8 @@ export function Home() {
   const [searchResults, setSearchResults] = useState<Employee[]>([]);
   const [showCreateEmployeeModal, setShowCreateEmployeeModal] =
     useState<boolean>(false);
+
+  const { t } = useTranslation();
 
   const getEmployees = async () => {
     try {
@@ -53,18 +56,17 @@ export function Home() {
         <Container>
           <Row className="align-items-center justify-content-center">
             <Col md="4">
-              <h1>Mitarbeiter</h1>
+              <h1>{t("home.employee")}</h1>
             </Col>
             <Col md="6">
               <SearchBar onSearchResults={handleSearchResults} />
             </Col>
             <Col md="1">
-              {/*TODO INCREASE SWITCH SIZE*/}
               <Form.Check
                 type="switch"
                 id="employeeView"
                 onChange={() => showEmployeeView(!employeeView)}
-                label="Tabelle"
+                label={t("home.switch.label")}
               />
             </Col>
             <Col md="1">
@@ -73,13 +75,13 @@ export function Home() {
                 variant="primary"
                 disabled={enableNewButton !== 1}
               >
-                Neu
+                {t("new")}
               </Button>
             </Col>
           </Row>
           {employee === undefined ? (
             <Row className="mt-2">
-              <h2>Keine Mitarbeiter</h2>
+              <h2>{t("home.employee.empty")}</h2>
             </Row>
           ) : (
             <Row className="mt-2">

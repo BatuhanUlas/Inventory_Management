@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import { App } from "./App";
+import "lib/i18next";
 
 //Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";

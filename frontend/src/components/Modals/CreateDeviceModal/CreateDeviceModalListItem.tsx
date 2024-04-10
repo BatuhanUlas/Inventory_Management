@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import { toast } from "react-toastify";
+import { t } from "i18next";
 
 export interface CreateDeviceModalListItemProps {
   values: Device;
@@ -47,7 +48,7 @@ export const CreateDeviceModalListItem = ({
       <Form onSubmit={handleSubmit}>
         <InputGroup className="mb-3">
           <InputGroup.Text>
-            <strong>Typ</strong>
+            <strong>{t("devicetable.typ")}</strong>
           </InputGroup.Text>
           <Form.Control
             type="text"
@@ -59,7 +60,7 @@ export const CreateDeviceModalListItem = ({
         </InputGroup>
         <InputGroup className="mb-3">
           <InputGroup.Text>
-            <strong>Marke</strong>
+            <strong>{t("devicetable.brand")}</strong>
           </InputGroup.Text>
           <Form.Control
             type="text"
@@ -71,7 +72,7 @@ export const CreateDeviceModalListItem = ({
         </InputGroup>
         <InputGroup className="mb-3">
           <InputGroup.Text>
-            <strong>Modell</strong>
+            <strong>{t("devicetable.model")}</strong>
           </InputGroup.Text>
           <Form.Control
             type="text"
@@ -83,7 +84,7 @@ export const CreateDeviceModalListItem = ({
         </InputGroup>
         <InputGroup className="mb-3">
           <InputGroup.Text>
-            <strong>SerienNr.</strong>
+            <strong>{t("devicetable.serialnumber")}</strong>
           </InputGroup.Text>
           <Form.Control
             type="text"
@@ -95,7 +96,7 @@ export const CreateDeviceModalListItem = ({
         </InputGroup>
         <InputGroup className="">
           <InputGroup.Text>
-            <strong>Anzahl</strong>
+            <strong>{t("devicetable.amount")}</strong>
           </InputGroup.Text>
           <Form.Control
             type="text"

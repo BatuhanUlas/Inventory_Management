@@ -7,6 +7,7 @@ import Table from "react-bootstrap/Table";
 import placeholder from "assets/img/placeholder.png";
 import { useState } from "react";
 import { EditEmployeeModal } from "pages/EditEmployeeModal";
+import { useTranslation } from "react-i18next";
 
 export interface EmployeeCardListItemProps {
   employeeCard: Employee;
@@ -16,6 +17,7 @@ export const EmployeeCardListItem = ({
   employeeCard,
 }: EmployeeCardListItemProps) => {
   const [showModal, setShowModal] = useState<boolean>(false);
+  const { t } = useTranslation();
 
   const handleRowClick = () => {
     setShowModal(true);
@@ -56,19 +58,19 @@ export const EmployeeCardListItem = ({
             <Table striped bordered hover>
               <tbody>
                 <tr>
-                  <td>PersonalNr.</td>
+                  <td>{t("employeecard.personalNumber")}</td>
                   <td>{employeeCard.employeeNumber}</td>
                 </tr>
                 <tr>
-                  <td>Email</td>
+                  <td>{t("employeecard.email")}</td>
                   <td>{employeeCard.email}</td>
                 </tr>
                 <tr>
-                  <td>Berechtigung</td>
+                  <td>{t("employeecard.right")}</td>
                   <td>{employeeCard.right_id === 1 ? "Admin" : "Normal"}</td>
                 </tr>
                 <tr>
-                  <td>Anzahl Geräte</td>
+                  <td>{t("employeecard.device.count")}</td>
                   <td>{employeeCard.devices.length}</td>
                 </tr>
               </tbody>

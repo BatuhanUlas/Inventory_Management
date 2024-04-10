@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -11,6 +11,7 @@ import { AxiosResponse } from "axios";
 import { Employee } from "types/employee";
 import { CreateDeviceModalList } from "../CreateDeviceModal";
 import { Device } from "types/device";
+import { useTranslation } from "react-i18next";
 
 export interface CreateEmployeeModalListItemProps {
   show: boolean;
@@ -21,6 +22,7 @@ export const CreateEmployeeModalListItem = ({
   show,
   onHide,
 }: CreateEmployeeModalListItemProps) => {
+  const { t } = useTranslation();
   const defaultDeviceValues: Device = {
     amount: "",
     brand: "",
@@ -145,18 +147,18 @@ export const CreateEmployeeModalListItem = ({
     >
       <Form onSubmit={handleDeviceFormSubmit}>
         <Modal.Header>
-          <Modal.Title>Mitarbeiter hinzufügen</Modal.Title>
+          <Modal.Title>{t("createEmployee.add")}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Row>
             <Col md="3">
               <InputGroup className="mb-3">
                 <InputGroup.Text id="edit-employee-email">
-                  <strong>E-Mail</strong>
+                  <strong>{t("tableview.email")}</strong>
                 </InputGroup.Text>
                 <Form.Control
                   type="text"
-                  placeholder="E-Mail"
+                  placeholder={t("tableview.email")}
                   aria-label="email"
                   aria-describedby="editEmployeeEmail"
                   name="email"
@@ -168,7 +170,7 @@ export const CreateEmployeeModalListItem = ({
             <Col md="3">
               <InputGroup className="mb-3">
                 <InputGroup.Text id="edit-employee-salutation">
-                  <strong>Anrede</strong>
+                  <strong>{t("tableview.salutation")}</strong>
                 </InputGroup.Text>
                 <Form.Control
                   type="text"
@@ -183,11 +185,11 @@ export const CreateEmployeeModalListItem = ({
             <Col md="3">
               <InputGroup className="mb-3">
                 <InputGroup.Text id="edit-employee-lastname">
-                  <strong>Nachname</strong>
+                  <strong>{t("tableview.lastname")}</strong>
                 </InputGroup.Text>
                 <Form.Control
                   type="text"
-                  placeholder="Nachname"
+                  placeholder={t("tableview.lastname")}
                   aria-label="lastname"
                   name="lastname"
                   onChange={onUpdateField}
@@ -198,7 +200,7 @@ export const CreateEmployeeModalListItem = ({
             <Col md="3">
               <InputGroup className="mb-3">
                 <InputGroup.Text>
-                  <strong>Rechte</strong>
+                  <strong>{t("tableview.right")}</strong>
                 </InputGroup.Text>
                 <Form.Select
                   id="right_id"
@@ -216,11 +218,11 @@ export const CreateEmployeeModalListItem = ({
             <Col md="3">
               <InputGroup className="mb-3">
                 <InputGroup.Text id="edit-employee-name">
-                  <strong>Name</strong>
+                  <strong>{t("tableview.name")}</strong>
                 </InputGroup.Text>
                 <Form.Control
                   type="text"
-                  placeholder="Name"
+                  placeholder={t("tableview.name")}
                   aria-label="name"
                   name="name"
                   onChange={onUpdateField}
@@ -231,11 +233,11 @@ export const CreateEmployeeModalListItem = ({
             <Col md="3">
               <InputGroup className="mb-3">
                 <InputGroup.Text id="edit-employee-password">
-                  <strong>Passwort</strong>
+                  <strong>{t("login.example.password")}</strong>
                 </InputGroup.Text>
                 <Form.Control
                   type="text"
-                  placeholder="Name"
+                  placeholder={t("login.example.password")}
                   aria-label="name"
                   name="password"
                   onChange={onUpdateField}
@@ -246,11 +248,11 @@ export const CreateEmployeeModalListItem = ({
             <Col md="3">
               <InputGroup className="mb-3">
                 <InputGroup.Text>
-                  <strong>PersonalNr.</strong>
+                  <strong>{t("tableview.personalnumber")}</strong>
                 </InputGroup.Text>
                 <Form.Control
                   type="number"
-                  placeholder="Personalnummer"
+                  placeholder={t("tableview.personalnumber")}
                   aria-label="personalnumber"
                   name="employeeNumber"
                   onChange={onUpdateField}

@@ -1,14 +1,15 @@
 import { useAuth } from "components/Auth";
 import Button from "react-bootstrap/Button";
+import { useTranslation } from "react-i18next";
 
 export const Logout = () => {
   const { setToken } = useAuth();
+  const { t } = useTranslation();
 
   const handleLogout = () => {
-    //TODO FIX TYP NULL
     //@ts-ignore
     setToken();
   };
 
-  return <Button onClick={handleLogout}>Logout</Button>;
+  return <Button onClick={handleLogout}>{t("logout")}</Button>;
 };

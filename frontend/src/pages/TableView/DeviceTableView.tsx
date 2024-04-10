@@ -1,4 +1,5 @@
 import Table from "react-bootstrap/Table";
+import { useTranslation } from "react-i18next";
 import { Device } from "types/device";
 
 export interface DeviceTableViewProps {
@@ -6,15 +7,16 @@ export interface DeviceTableViewProps {
 }
 
 export const DeviceTableView = ({ devices }: DeviceTableViewProps) => {
+  const { t } = useTranslation();
   return (
     <Table striped bordered hover>
       <thead>
         <tr>
-          <th>Typ</th>
-          <th>Marke</th>
-          <th>Model</th>
-          <th>Seriennummer</th>
-          <th>Anzahl</th>
+          <th>{t("devicetable.typ")}</th>
+          <th> {t("devicetable.brand")}</th>
+          <th> {t("devicetable.model")}</th>
+          <th> {t("devicetable.serialnumber")}</th>
+          <th> {t("devicetable.amount")}</th>
         </tr>
       </thead>
       <tbody>

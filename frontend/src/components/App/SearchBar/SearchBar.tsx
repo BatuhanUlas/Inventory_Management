@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
+import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { fetchEmployeeSearch } from "services/employees";
 import { Employee } from "types/employee";
@@ -10,6 +11,7 @@ export interface SearchBarProps {
 
 export const SearchBar = ({ onSearchResults }: SearchBarProps) => {
   const [searchInput, setSearchInput] = useState<string>("");
+  const { t } = useTranslation();
 
   const getEmployeeSearch = async (searchString: string) => {
     try {
@@ -47,7 +49,7 @@ export const SearchBar = ({ onSearchResults }: SearchBarProps) => {
         type="text"
         onChange={onUpdateField}
         value={searchInput}
-        placeholder={"Name, seriennummer, ..."}
+        placeholder={t("searchbar.example")}
         id="searchbar"
         autoComplete="off"
       />
